@@ -1,6 +1,6 @@
 import unittest
 import os
-from json_random_item_picker import file_exists
+from rji_cli.file_operations import file_exists
 
 class TestFileOperations(unittest.TestCase):
 

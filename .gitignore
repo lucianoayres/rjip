@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*~
+
+# Test coverage directory
+htmlcov/
+
+# Unit test discovery cache
+.pytest_cache/
+
+# Coverage reports
+.coverage
+coverage.xml
+
+# IDE specific files
+.vscode/
+*.idea/
+
+# Compiled Python files
+*.pyc
+
+# Dependency directories
+node_modules/
