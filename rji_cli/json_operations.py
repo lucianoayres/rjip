@@ -11,11 +11,14 @@ def validate_json_property(file_path, property_name):
     """Validate JSON property existence."""
     data = load_json(file_path)
     
+    property_found = False
     for item in data:
-        if property_name not in item:
-            raise ValueError(f"Property '{property_name}' not found in JSON file '{file_path}'.")
-
-    # If all items contain the property, return True
+        if property_name in item:
+            property_found = True
+    
+    if not property_found:
+        return False
+    
     return True
     
 def all_items_picked(remaining_items):

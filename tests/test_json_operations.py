@@ -57,19 +57,21 @@ class TestJsonOperations(unittest.TestCase):
         # Arrange: Create a temporary JSON file with test data
         temp_file_name = self.create_temporary_json_file(self.json_data)
 
-        # Act & Assert: Validate an existing property in the JSON file
-        try:
-            validate_json_property(temp_file_name, "id")
-        except ValueError:
-            self.fail("validate_json_property() raised ValueError unexpectedly!")
+        # Act: Validate an existing property in the JSON file
+        result = validate_json_property(temp_file_name, "id")
+
+        # Assert: Check if property validation returns True
+        self.assertTrue(result)
 
     def test_validate_json_property_non_existing_property(self):
         # Arrange: Create a temporary JSON file with test data
         temp_file_name = self.create_temporary_json_file(self.json_data)
 
-        # Act & Assert: Validate a non-existing property raises ValueError
-        with self.assertRaises(ValueError):
-            validate_json_property(temp_file_name, "non_existing_key")
+        # Act: Validate a non-existing property in the JSON file
+        result = validate_json_property(temp_file_name, "non_existing_key")
+
+        # Assert: Check if property validation returns False
+        self.assertFalse(result)
 
     def test_exclude_json_items_in_common(self):
         # Act: Exclude common items between two JSON arrays based on 'id'
@@ -110,3 +112,4 @@ class TestJsonOperations(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

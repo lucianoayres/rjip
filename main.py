@@ -1,30 +1,41 @@
 import sys
 import argparse
-import json
 from rji_cli.file_operations import file_exists, resolve_last_pick_file_path, create_empty_json_file, is_json_valid
 from rji_cli.json_operations import validate_json_property, load_json, all_items_picked, exclude_json_items_in_common, get_random_item
 from rji_cli.update_operations import update_last_pick_json
 from rji_cli.utils import print_json
 
+# Error code mappings
+ERROR_CODES = {
+    "invalid_or_nonexistent_json_file": "invalid_or_nonexistent_json_file",
+    "empty_input_json_file": "empty_input_json_file",
+    "invalid_property_name": "invalid_property_name",
+    "all_items_picked": "all_items_picked",
+    "generic_error": "generic_error"
+}
+
 def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
     try:
         # Validate input file existence and format
         if not is_json_valid(input_file):
-            raise ValueError(f"Invalid or non-existent JSON file: '{input_file}'")
+            error_message = f"Invalid or non-existent JSON file: '{input_file}'"
+            error_code = ERROR_CODES["invalid_or_nonexistent_json_file"]
+            raise ValueError(error_message)
 
         # Load input data from JSON file
         data = load_json(input_file)
 
         # Check if data is empty
         if not data:
-            raise ValueError(f"Input JSON file '{input_file}' is empty.")
+            error_message = f"Input JSON file '{input_file}' is empty."
+            error_code = ERROR_CODES["empty_input_json_file"]
+            raise ValueError(error_message)
 
         # Validate property name if provided
-        try:
-            if property_name and not validate_json_property(input_file, property_name):
-                raise ValueError(f"Property '{property_name}' is not valid in the input file '{input_file}'.")
-        except ValueError as ve:
-            raise ve
+        if property_name and not validate_json_property(input_file, property_name):
+            error_message = f"Property '{property_name}' is not valid in the input file '{input_file}'."
+            error_code = ERROR_CODES["invalid_property_name"]
+            raise ValueError(error_message)
 
         # Determine last pick file path
         last_pick_file_path = resolve_last_pick_file_path(input_file, last_pick_file)
@@ -44,7 +55,9 @@ def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
 
         # Check if all items have been picked
         if all_items_picked(remaining_items):
-            raise ValueError("All items have been picked.")
+            error_message = "All items have been picked."
+            error_code = ERROR_CODES["all_items_picked"]
+            raise ValueError(error_message)
 
         # Get a new random item
         new_pick = get_random_item(remaining_items)
@@ -57,8 +70,17 @@ def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
         response = {"status": "success", "new_pick": new_pick}
         print_json(response)
         sys.exit(0)
+    
+    except ValueError as ve:
+        error_message = str(ve)
+        response = {"status": "error", "message": error_message, "error_code": error_code}
+        print_json(response)
+        sys.exit(1)
+    
     except Exception as e:
-        response = {"status": "error", "message": str(e)}
+        error_message = "An unexpected error occurred."
+        error_code = ERROR_CODES["generic_error"]
+        response = {"status": "error", "message": error_message, "error_code": error_code}
         print_json(response)
         sys.exit(1)
 
