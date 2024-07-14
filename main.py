@@ -67,7 +67,7 @@ def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
             update_last_pick_json(last_pick_file_path, new_pick)
 
         # Return the new pick in JSON format
-        response = {"status": "success", "new_pick": new_pick}
+        response = {"status": "success", "item": new_pick}
         print_json(response)
         sys.exit(0)
     
