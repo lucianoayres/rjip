@@ -29,12 +29,15 @@ def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
         # Determine last pick file path
         last_pick_file_path = resolve_last_pick_file_path(input_file, last_pick_file)
 
-        # Create last pick file if it doesn't exist
-        if not file_exists(last_pick_file_path):
+        # Only create last pick file if it doesn't exist and --no-update was not passed
+        if update_last_pick and not file_exists(last_pick_file_path):
             create_empty_json_file(last_pick_file_path)
 
-        # Load last picked items
-        last_picks = load_json(last_pick_file_path)
+        # Load last picked items if the file exists
+        if file_exists(last_pick_file_path):
+            last_picks = load_json(last_pick_file_path)
+        else:
+            last_picks = []
 
         # Exclude items already picked
         remaining_items = exclude_json_items_in_common(data, last_picks, property_name)
