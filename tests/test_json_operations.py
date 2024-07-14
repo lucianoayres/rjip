@@ -55,17 +55,17 @@ class TestJsonOperations(unittest.TestCase):
 
     def test_validate_json_property_existing_property(self):
         # Arrange: Create a temporary JSON file with test data
-        temp_file_name = self.create_temporary_json_file(self.data)
+        temp_file_name = self.create_temporary_json_file(self.json_data)
 
         # Act & Assert: Validate an existing property in the JSON file
         try:
-            validate_json_property(temp_file_name, "key")
+            validate_json_property(temp_file_name, "id")
         except ValueError:
             self.fail("validate_json_property() raised ValueError unexpectedly!")
 
     def test_validate_json_property_non_existing_property(self):
         # Arrange: Create a temporary JSON file with test data
-        temp_file_name = self.create_temporary_json_file(self.data)
+        temp_file_name = self.create_temporary_json_file(self.json_data)
 
         # Act & Assert: Validate a non-existing property raises ValueError
         with self.assertRaises(ValueError):

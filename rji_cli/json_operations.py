@@ -7,11 +7,16 @@ def load_json(file_path):
         data = json.load(f)
         return data
 
-def validate_json_property(file_path, property):
+def validate_json_property(file_path, property_name):
     """Validate JSON property existence."""
     data = load_json(file_path)
-    if property not in data[0]:
-        raise ValueError(f"Propert '{property}' JSON file '{file_path}'.")
+    
+    for item in data:
+        if property_name not in item:
+            raise ValueError(f"Property '{property_name}' not found in JSON file '{file_path}'.")
+
+    # If all items contain the property, return True
+    return True
     
 def all_items_picked(remaining_items):
     """Check if all items have been picked."""

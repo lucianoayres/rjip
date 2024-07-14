@@ -21,3 +21,17 @@ def create_empty_json_file(file_path):
     """Creates an empty JSON file at the specified path."""
     with open(file_path, 'w') as file:
         json.dump([], file)
+
+def is_json_valid(file_path):
+    """Check if the file exists and is valid JSON."""
+    if not file_exists(file_path):
+        return False
+
+    try:
+        with open(file_path, 'r') as f:
+            json.load(f)
+    except json.JSONDecodeError:
+        return False
+
+    return True
+

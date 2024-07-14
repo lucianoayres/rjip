@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch
 from io import StringIO
-import sys
-from rji_cli.utils import print_message, exit_with_message
+import json
+from rji_cli.utils import print_message, exit_with_message, print_json
 
 class TestUtils(unittest.TestCase):
 
@@ -41,6 +41,18 @@ class TestUtils(unittest.TestCase):
         
         self.assertEqual(mock_stdout.getvalue(), message + '\n')
         self.assertEqual(cm.exception.code, code)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_print_json(self, mock_stdout):
+        # Arrange
+        data = {"key": "value"}
+        expected_output = json.dumps(data) + '\n'
+        
+        # Act
+        print_json(data)
+        
+        # Assert
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
 
 if __name__ == '__main__':
     unittest.main()
