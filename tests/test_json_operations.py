@@ -8,6 +8,7 @@ from rji_cli.json_operations import (
     validate_json_property,
     exclude_json_items_in_common,
     get_random_item,
+    all_items_picked,
 )
 
 class TestJsonOperations(unittest.TestCase):
@@ -92,6 +93,20 @@ class TestJsonOperations(unittest.TestCase):
         # Act & Assert: Ensure ValueError is raised when data is empty
         with self.assertRaises(ValueError):
             get_random_item([])
+
+    def test_all_items_picked_with_items_remaining(self):
+        # Act: Check if all items have been picked with items remaining
+        result = all_items_picked(self.json_data)
+
+        # Assert: The result should be False
+        self.assertFalse(result)
+
+    def test_all_items_picked_with_no_items_remaining(self):
+        # Act: Check if all items have been picked with no items remaining
+        result = all_items_picked([])
+
+        # Assert: The result should be True
+        self.assertTrue(result)
 
 if __name__ == "__main__":
     unittest.main()

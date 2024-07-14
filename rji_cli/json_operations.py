@@ -12,6 +12,10 @@ def validate_json_property(file_path, property):
     data = load_json(file_path)
     if property not in data[0]:
         raise ValueError(f"Propert '{property}' JSON file '{file_path}'.")
+    
+def all_items_picked(remaining_items):
+    """Check if all items have been picked."""
+    return len(remaining_items) == 0
 
 def exclude_json_items_in_common(json1_file_path, json2_file_path, property_name):
     """Exclude items common with another JSON based on property."""
