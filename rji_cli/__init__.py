@@ -1,7 +1,7 @@
 from .file_operations import file_exists, resolve_last_pick_file_path, is_json_valid
 from .json_operations import load_json, validate_json_property, exclude_json_items_in_common, get_random_item
 from .update_operations import update_last_pick_json
-from .utils import print_message, exit_with_message, print_json
+from .utils import print_json
 
 __all__ = [
     'file_exists',
@@ -14,7 +14,5 @@ __all__ = [
     'exclude_json_items_in_common',
     'get_random_item',
     'update_last_pick_json',
-    'print_message',
-    'exit_with_message',
     'print_json'
 ]

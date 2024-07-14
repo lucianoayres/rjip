@@ -8,15 +8,15 @@
         "name": "Item E"
     },
     {
-        "id": 1,
-        "name": "Item A"
-    },
-    {
         "id": 3,
         "name": "Item C"
     },
     {
         "id": 4,
         "name": "Item D"
+    },
+    {
+        "id": 1,
+        "name": "Item A"
     }
 ]
