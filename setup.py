@@ -11,9 +11,9 @@ setup(
             'coverage',
         ]
     },
-    entry_points={
+    scripts={
         'console_scripts': [
-            'rjip = main:main',  
+            'rjip=main:main',  
         ],
     },
     classifiers=[

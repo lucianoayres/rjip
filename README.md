@@ -9,20 +9,12 @@ Command-line tool designed to pick a random item from a JSON file while ensuring
 -   Property Validation: Validates a specified property name within the JSON data.
 -   Error Handling: Includes specific error codes for different validation and operational errors.
 
-## Installation
-
-To install the required dependencies, you can use pip and the requirements.txt file provided in the project.
-
-```bash
-$ pip install .
-```
-
 ## Usage
 
 To use the tool, execute `rjip` with the following parameters:
 
 ```bash
-$ rjip input_file property_name [last_pick_file] [--no-update]
+$ python main.py input_file property_name [last_pick_file] [--no-update]
 ```
 
 -   `input_file`: The path to the input JSON file containing the items to be picked.
