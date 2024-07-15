@@ -95,7 +95,7 @@ def print_usage():
     sys.exit(1)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process some JSON files.")
+    parser = argparse.ArgumentParser(description="Command-line tool designed to pick a random item from a JSON file while ensuring that each item is picked only once.")
 
     # Add arguments to the parser
     parser.add_argument("input_file", nargs="?", help="The input JSON file.")
