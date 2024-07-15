@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 import json
-from rji_cli.utils import print_json
+from rjip.utils import print_json
 
 class TestUtils(unittest.TestCase):
 

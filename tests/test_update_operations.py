@@ -1,7 +1,7 @@
 import unittest
 import os
 import json
-from rji_cli.update_operations import update_last_pick_json
+from rjip.update_operations import update_last_pick_json
 
 class TestUpdateLastPickJson(unittest.TestCase):
 

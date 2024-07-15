@@ -3,7 +3,7 @@ import os
 import json
 import random
 from tempfile import NamedTemporaryFile
-from rji_cli.json_operations import (
+from rjip.json_operations import (
     load_json,
     validate_json_property,
     exclude_json_items_in_common,

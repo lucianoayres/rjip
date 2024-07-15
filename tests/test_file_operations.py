@@ -2,7 +2,7 @@ import unittest
 import os
 import json
 from unittest.mock import patch, mock_open
-from rji_cli.file_operations import (
+from rjip.file_operations import (
     file_exists,
     resolve_last_pick_file_path,
     create_empty_json_file,

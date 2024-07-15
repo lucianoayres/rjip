@@ -8,7 +8,7 @@ test-unittest:
 	python3 -m unittest discover tests
 
 coverage:
-	pytest --cov=rji_cli tests/ 
+	pytest --cov=rjip tests/ 
 
 coverage-report:
 	coverage html

@@ -1,9 +1,9 @@
 import sys
 import argparse
-from rji_cli.file_operations import file_exists, resolve_last_pick_file_path, create_empty_json_file, is_json_valid
-from rji_cli.json_operations import validate_json_property, load_json, all_items_picked, exclude_json_items_in_common, get_random_item
-from rji_cli.update_operations import update_last_pick_json
-from rji_cli.utils import print_json
+from rjip.file_operations import file_exists, resolve_last_pick_file_path, create_empty_json_file, is_json_valid
+from rjip.json_operations import validate_json_property, load_json, all_items_picked, exclude_json_items_in_common, get_random_item
+from rjip.update_operations import update_last_pick_json
+from rjip.utils import print_json
 
 # Error code mappings
 ERROR_CODES = {
@@ -84,13 +84,31 @@ def main(input_file, property_name, last_pick_file=None, update_last_pick=True):
         print_json(response)
         sys.exit(1)
 
+def print_usage():
+    print("rjip input_file property_name [last_pick_file] [--no-update]")
+    print("\nArguments:\n")
+    print("input_file         The path to the input JSON file containing the items to be picked.")
+    print("property_name      A property name to validate within the JSON items.")
+    print("last_pick_file     A file to store the last picked items (default: none). If no last_pick_file is specified, a new file will be created using the input file name as a prefix.")
+    print("--no-update        A flag to disable updating the file that stores the last picked items.")
+    print("\nrjip@1.0")
+    sys.exit(1)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process some JSON files.")
-    parser.add_argument("input_file", help="The input JSON file.")
-    parser.add_argument("property_name", help="The property name to validate.")
+
+    # Add arguments to the parser
+    parser.add_argument("input_file", nargs="?", help="The input JSON file.")
+    parser.add_argument("property_name", nargs="?", help="The property name to validate.")
     parser.add_argument("last_pick_file", nargs="?", default=None, help="The last pick JSON file.")
     parser.add_argument("--no-update", dest="update_last_pick", action="store_false", help="Do not update the last pick file.")
 
+    # Parse arguments from command line
     args = parser.parse_args()
 
+    # Check if required arguments are provided
+    if not args.input_file or not args.property_name:
+        print_usage()
+
+    # Call main function with parsed arguments
     main(args.input_file, args.property_name, args.last_pick_file, args.update_last_pick)

@@ -14,5 +14,5 @@ __all__ = [
     'exclude_json_items_in_common',
     'get_random_item',
     'update_last_pick_json',
-    'print_json'
+    'print_json',
 ]
