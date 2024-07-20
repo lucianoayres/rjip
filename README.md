@@ -1,3 +1,5 @@
+![Screenshot from 2024-07-20 12-03-52](https://github.com/user-attachments/assets/cc0c916c-ca2f-4345-9b98-739d666e34a4)
+
 # rJip: Random JSON Item Picker
 
 Command-line tool designed to pick a random item from a JSON file while ensuring that each item is picked only once. It keeps track of previously picked items to maintain uniqueness until all items have been picked at least once.
