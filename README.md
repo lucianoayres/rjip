@@ -16,7 +16,7 @@ Command-line tool designed to pick a random item from a JSON file while ensuring
 To use the tool, execute `rjip` binary file in the `dist` directory with the following parameters:
 
 ```bash
-$ ./rjip input_file property_name [last_pick_file] [--no-update]
+$ ./rjip [input_file] [property_name] [last_pick_file] [--no-update]
 ```
 
 ### Arguments
