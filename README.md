@@ -13,11 +13,13 @@ Command-line tool designed to pick a random item from a JSON file while ensuring
 
 ## Usage
 
-To use the tool, execute `rjip` with the following parameters:
+To use the tool, execute `rjip` binary file in the `dist` directory with the following parameters:
 
 ```bash
-$ python main.py input_file property_name [last_pick_file] [--no-update]
+$ ./rjip input_file property_name [last_pick_file] [--no-update]
 ```
+
+### Arguments
 
 -   `input_file`: The path to the input JSON file containing the items to be picked.
 -   `property_name`: A property name to validate within the JSON items.
@@ -154,6 +156,14 @@ To generate an HTML coverage report:
 
 ```bash
 make coverage-report
+```
+
+### 5. Building
+
+To build the binary file:
+
+```bash
+make build
 ```
 
 ### 5. Cleaning Up

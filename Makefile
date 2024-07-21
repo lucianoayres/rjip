@@ -23,5 +23,8 @@ coverage:
 coverage-report:
 	coverage html
 
+build:
+	pyinstaller --onefile --name rjip main.py
+
 clean:
-	rm -rf $(VENV) .coverage htmlcov
+	rm -rf $(VENV) build .coverage htmlcov

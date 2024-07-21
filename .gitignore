@@ -8,6 +8,7 @@ tests/__pycache__/
 venv/
 env/
 ENV/
+build/
 
 # Temporary files
 *.log

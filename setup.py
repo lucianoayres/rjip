@@ -9,6 +9,7 @@ setup(
             'pytest',
             'pytest-cov',
             'coverage',
+            'pyinstaller'
         ]
     },
     scripts={
