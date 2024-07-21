@@ -170,7 +170,7 @@ To build the binary file:
 make build
 ```
 
-### 5. Cleaning Up
+### 6. Cleaning Up
 
 First, exit the virtual environment:
 
