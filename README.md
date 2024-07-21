@@ -108,15 +108,15 @@ First, create the virtual environment:
 make venv
 ```
 
-### 2. Activating the Virtual Environment
+### 2. Installing Dependencies
+
+First, make sure to activate the virtual environment:
 
 ```bash
-make activate
+source venv/bin/activate
 ```
 
-### 3. Installing Dependencies
-
-Install the development dependencies listed in the `requirements-dev.txt` file:
+Then, install the development dependencies listed in the `requirements-dev.txt` file:
 
 ```bash
 make install-deps
@@ -128,7 +128,7 @@ The `requirements-dev.txt` file includes:
 -   [pytest-cov](https://github.com/pytest-dev/pytest-cov)
 -   [coverage](https://github.com/nedbat/coveragepy)
 
-### 4. Running tests
+### 3. Running tests
 
 To run tests using `pytest`:
 
@@ -142,7 +142,7 @@ To run tests using `unittest`:
 make test-unittest
 ```
 
-### 5. Generating Coverage Reports
+### 4. Generating Coverage Reports
 
 To run coverage tests and generate a report:
 
@@ -156,9 +156,15 @@ To generate an HTML coverage report:
 make coverage-report
 ```
 
-### 6. Cleaning Up
+### 5. Cleaning Up
 
-To clen up the virtual environment and coverage files:
+First, exit the virtual environment:
+
+```bash
+deactivate
+```
+
+Then clean up the virtual environment and coverage files
 
 ```bash
 make clean

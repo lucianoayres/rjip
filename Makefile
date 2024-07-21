@@ -1,44 +1,27 @@
 VENV := venv
 PYTHON := $(VENV)/bin/python
-PIP := $(VENV)/bin/pip
 
-.PHONY: test test-unittest coverage coverage-report venv install-deps activate clean
+PHONY: test test-unittest coverage coverage-report venv install-deps clean
 
-# Command to create the virtual environment
 venv:
 	python3 -m venv $(VENV)
+	@echo "\nRun 'source $(VENV)/bin/activate' to start virtual environment"
 
-# Command to install dependencies in the virtual environment
-install-deps: venv
-	$(PIP) install -r requirements.txt
+install-deps:
+	pip install -r requirements-dev.txt
 
-# Command to activate the virtual environment (for informational purposes)
-activate:
-	source $(VENV)/bin/activate
+test:
+	pytest
 
-# Command to run tests using pytest within the virtual environment
-test: check-venv install-deps
-	$(PYTHON) -m pytest
+# Same as 'test' command, but using unittest package
+test-unittest:
+	python3 -m unittest discover tests
 
-# Command to run tests using unittest within the virtual environment
-test-unittest: check-venv install-deps
-	$(PYTHON) -m unittest discover tests
+coverage:
+	pytest --cov=rjip tests/ 
 
-# Command to run coverage tests within the virtual environment
-coverage: check-venv install-deps
-	$(PYTHON) -m pytest --cov=rjip tests/
+coverage-report:
+	coverage html
 
-# Command to generate coverage report within the virtual environment
-coverage-report: coverage
-	$(PYTHON) -m coverage html
-
-# Command to clean up the virtual environment and coverage files
 clean:
 	rm -rf $(VENV) .coverage htmlcov
-
-# Command to check if the virtual environment exists
-check-venv:
-	@if [ ! -d "$(VENV)" ]; then \
-		echo "Virtual environment not found! Creating..."; \
-		$(MAKE) venv; \
-	fi
