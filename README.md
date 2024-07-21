@@ -4,6 +4,8 @@
 
 Command-line tool designed to pick a random item from a JSON file while ensuring that each item is picked only once. It keeps track of previously picked items to maintain uniqueness until all items have been picked at least once.
 
+## Demo
+
 ![rjip_demo](https://github.com/user-attachments/assets/b95c8c24-833f-472a-a0b9-831c55aa5ab0)
 
 ## Features
