@@ -94,6 +94,74 @@ Below is a list of possible error codes and their descriptions:
 }
 ```
 
+## Development
+
+If you want to build and collaborate on the project, follow these steps to set up your development environment.
+
+### 1. Setting Up the Virtual Environment
+
+First, create the virtual environment:
+
+```bash
+make venv
+```
+
+### 2. Activating the Virtual Environment
+
+```bash
+make activate
+```
+
+### 3. Installing Dependencies
+
+Install the development dependencies listed in the `requirements-dev.txt` file:
+
+```bash
+make install-deps
+```
+
+The `requirements-dev.txt` file includes:
+
+-   [pytest](https://github.com/pytest-dev/pytest)
+-   [pytest-cov](https://github.com/pytest-dev/pytest-cov)
+-   [coverage](https://github.com/nedbat/coveragepy)
+
+### 4. Running tests
+
+To run tests using `pytest`:
+
+```bash
+make test
+```
+
+To run tests using `unittest`:
+
+```bash
+make test-unittest
+```
+
+### 5. Generating Coverage Reports
+
+To run coverage tests and generate a report:
+
+```bash
+make coverage
+```
+
+To generate an HTML coverage report:
+
+```bash
+make coverage-report
+```
+
+### 6. Cleaning Up
+
+To clen up the virtual environment and coverage files:
+
+```bash
+make clean
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
