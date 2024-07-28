@@ -51,7 +51,7 @@ Create an input file (e.g., `data.json`) with the desired data:
 Execute the program, specifying the unique `property_name` key (e.g., `id`) and the file where the selected items will be stored (e.g., `last_picks.json`)
 
 ```bash
-$ python main.py data.json id last_picks.json
+$ ./rjip data.json id last_picks.json
 ```
 
 ### 3. View the Output
